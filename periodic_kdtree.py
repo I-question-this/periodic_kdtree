@@ -83,8 +83,8 @@ class PeriodicKDTree(KDTree):
         self.bounds = np.array(bounds)
         self.real_data = np.asarray(data)
         wrapped_data = (
-            self.real_data - np.where(bounds > 0.0,
-                (np.floor(self.real_data / bounds) * bounds), 0.0))
+            self.real_data - np.where(self.bounds > 0.0,
+                                      (np.floor(self.real_data / self.bounds) * self.bounds), 0.0))
 
         # Calculate maximum distance_upper_bound
         self.max_distance_upper_bound = np.min(
@@ -192,8 +192,8 @@ class PeriodicCKDTree(cKDTree):
         self.bounds = np.array(bounds)
         self.real_data = np.asarray(data)
         wrapped_data = (
-            self.real_data - np.where(bounds > 0.0,
-                (np.floor(self.real_data / bounds) * bounds), 0.0))
+            self.real_data - np.where(self.bounds > 0.0,
+                (np.floor(self.real_data / self.bounds) * self.bounds), 0.0))
 
         # Calculate maximum distance_upper_bound
         self.max_distance_upper_bound = np.min(
