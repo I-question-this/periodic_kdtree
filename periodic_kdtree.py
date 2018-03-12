@@ -81,10 +81,11 @@ class PeriodicKDTree(KDTree):
 
         # Map all points to canonical periodic image
         self.bounds = np.array(bounds)
-        self.real_data = np.asarray(data)
+        self.real_data = data
+        data_np_arrary = np.asarray(data)
         wrapped_data = (
             self.real_data - np.where(self.bounds > 0.0,
-                                      (np.floor(self.real_data / self.bounds) * self.bounds), 0.0))
+                                      (np.floor(data_np_arrary / self.bounds) * self.bounds), 0.0))
 
         # Calculate maximum distance_upper_bound
         self.max_distance_upper_bound = np.min(
@@ -190,10 +191,11 @@ class PeriodicCKDTree(cKDTree):
 
         # Map all points to canonical periodic image
         self.bounds = np.array(bounds)
-        self.real_data = np.asarray(data)
+        self.real_data = data
+        data_np_arrary = np.asarray(data)
         wrapped_data = (
             self.real_data - np.where(self.bounds > 0.0,
-                (np.floor(self.real_data / self.bounds) * self.bounds), 0.0))
+                (np.floor(data_np_arrary / self.bounds) * self.bounds), 0.0))
 
         # Calculate maximum distance_upper_bound
         self.max_distance_upper_bound = np.min(
