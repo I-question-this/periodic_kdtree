@@ -198,7 +198,7 @@ class PeriodicCKDTree(cKDTree):
                 (np.floor(data_np_arrary / self.bounds) * self.bounds), 0.0))
 
         # Calculate maximum distance_upper_bound
-        self.max_distance_upper_bound = np.min(
+        self.max_distance_upper_bound = np.max(
             np.where(self.bounds > 0, 0.5 * self.bounds, np.inf))
 
         # Set up underlying kd-tree
